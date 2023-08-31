@@ -14,7 +14,7 @@ endif
 
 wineasio_dll_MODULE   = wineasio.dll
 
-PREFIX                = /usr
+PREFIX                = /usr/local
 SRCDIR                = .
 DLLS                  = $(wineasio_dll_MODULE) $(wineasio_dll_MODULE).so
 
