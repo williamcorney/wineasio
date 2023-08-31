@@ -1,30 +1,58 @@
-# WineASIO
+# WineASIO -macOS OSX friendly
 
-WineASIO provides an ASIO to JACK driver for WINE.  
-ASIO is the most common Windows low-latency driver, so is commonly used in audio workstation programs.
+WineASIO provides an ASIO to JACK driver for WINE.
 
-You can, for example, use with FLStudio under GNU/Linux systems (together with JACK).
+ASIO is a low-latency driver commonly used in audio workstation programs.
 
-![Screenshot](screenshot.png)
-
-For best results with Debian-based distributions,
-enable the [KXStudio repositories](https://kx.studio/Repositories) and install WineASIO from there.
+You can, for example, use with Logic Pro / Studio One (together with [JACK](https://jackaudio.org/downloads/)
 
 ### INSTALLATION
 
-Do the following to build for 32-bit Wine.
+Do the following to build for 64-bit Wine.  Note the path for **PREFIX** in the **Makefile.mk** has alread been amended to **/usr/local**
 
-```sh
-make 32
-```
+1.  Open a terminal at the folder where you downloaded and extracted wineasio,  type **make 64 -j16** and hit enter.
+2.  Copy wineasio.dll.so and winesasio.dll files from the build64 subfolder into their respective
+    LIB/WINE/X86_64-UNIX and LIB/WINE/X86_64-WINDOWS folders  (see below)
+  
+| Variant                           | Where to install wineasio.dll.so  and wineasio.dll           |
+|-----------------------------------|--------------------------------------------------------------|
+| Official Wine                     | /usr/local/lib/wine/x86_64-unixX86_64-unix                   |
+|                                   | /usr/local/lib/wine/x86_64-unixX86_64-windows                |
 
-Do the following to build for 64-bit Wine.
+3.  Open a terminal, type **wine64 cmd**, type regsvr32 wineasio.dll
 
-```sh
-make 64
-```
+#### CUSTOM WINEPREFIX
 
-#### LEGACY WINE
+If using crossover or wineskin winery you should place wineasio.dll and wineasio.dll in the above paths AND also in the locations mentioned below!!
+
+
+| Variant                           | X86_64-unix & X86_64-windows folder paths                    |
+|-----------------------------------|--------------------------------------------------------------|
+| Official Wine                     | /usr/local                                                   |
+| Wineskin wrapper /Wineskin winery | /Applications/MyWrapper.app/Contents/SharedSupport/Wine      |
+| Crossover                         | /Applications/Crossover.app/Contents/SharedSupport/Crossover |
+|                                   |                                                              |
+|                                   |                                                              |
+
+
+
+
+3.  (CROSSOVER users only) - Open a command prompt,  type the following and hit enter
+
+WINEPREFIX="/Users/username/Library/Application Support/CrossOver/Bottles/NAMEOFBOTTLE" wine64 cmd
+
+4.  (WINESKINWINERY users only) - Open a command prompt,  type the following and hit enter
+
+WINEPREFIX="/Applications/EP64.app/Contents/SharedSupport/prefix" wine64 cmd
+
+5.  Type regsvr32 wineasio.dll and hit enter.  You can close the command prompt
+
+6.  Open a command prompt through the Crossover GUI in the bottle you want to use and type the same command, regsvr32 wineasio.dll and hit enter.
+
+7.  If all went well you should see a Succesfully registered message
+
+
+
 
 To install on 32bit wine <= 6.5 (substitute with the path to the 32-bit wine libs for your distro).
 
