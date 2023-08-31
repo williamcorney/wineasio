@@ -7,7 +7,7 @@ ASIO is a low-latency driver commonly used in audio workstation programs.
 Wineasio enables low latency audio between your Windows VST running in WINE and your OSX system
 
 You must install [JACK](https://jackaudio.org/downloads/) on your OSX system and set an appropriate soundcard as the output device.  
-You can for convenience configure multiple profiles in Jack with different output devices.
+If you need to switch between multiple audio devices you can configure multiple profiles.
 
 ### PREPARATION
 
@@ -24,6 +24,8 @@ Optional - to install wineskin winery
 
 **brew install --cask --no-quarantine gcenx/wine/wineskin
 **
+
+With homebrew installed and the additional packages downloaded, you can now proceed to the following
 
 1. Dowload and extract https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
 2. Open a terminal at the location you extracted wine-8.13.tar.xz
